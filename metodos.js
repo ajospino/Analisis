@@ -1,6 +1,4 @@
 const math = require("mathjs/lib/browser/math");
-const { JSDOM } = require("jsdom");
-const { window } = new JSDOM();
 const ndarray = require('ndarray');
 var zeros = require('zeros'),
     fill = require('ndarray-fill');
@@ -10,7 +8,6 @@ class methods{
 
   static biseccion(fx, a, b, maxNum) {
     console.log("Biseccion: ");
-    var start = window.performance.now();
     let cond = 0.0000001;
     let i = 1;
     let xm = 0;
@@ -70,13 +67,10 @@ class methods{
       );
       i = i + 1;
     }
-    var end = window.performance.now();
-    console.log(`Execution time: ${end - start} ms`);
   }
 
   static reglaFalsa(fx, a, b, maxNum) {
     console.log("Regla Falsa:");
-    var start = window.performance.now();
     let cond = 0.0000001;
     let i = 1;
     let error = 1;
@@ -128,13 +122,10 @@ class methods{
       );
       i = i + 1;
     }
-    var end = window.performance.now();
-    console.log(`Execution time: ${end - start} ms`);
   }
 
   static puntoFijo(fx, gx, x0, maxNum) {
     console.log("Punto Fijo:");
-    var start = window.performance.now();
     let cond = 0.0000001;
     let error = 1;
     let i = 0;
@@ -190,13 +181,10 @@ class methods{
 
       i = i + 1;
     }
-    var end = window.performance.now();
-    console.log(`Execution time: ${end - start} ms`);
   }
 
   static secante(x0, x1, fx, maxNum) {
     console.log("Secante:");
-    var start = window.performance.now();
     let error = 1;
     let i = 0;
     let cond = 0.0000001;
@@ -252,8 +240,6 @@ class methods{
 
       i = i + 1;
     }
-    var end = window.performance.now();
-    console.log(`Execution time: ${end - start} ms`);
   }
 /** 
   static gaussSimple(Ma, b) {
@@ -285,7 +271,6 @@ class methods{
   */
   
   static vanderMon(x,y) {
-    var start = window.performance.now();
         
   if( x.dimension !== 1 ) {
     throw new TypeError('vandermonde: error: x debe ser un vector de una dimensión');
@@ -369,8 +354,6 @@ class methods{
       let diferencia = fin-fechaInicial;
       console.log("El tiempo que se demora es: " + diferencia + " milisegundos")
     }
-        var end = window.performance.now();
-        console.log(`Execution time: ${end - start} ms`);
     return vres;
         
         
@@ -378,7 +361,6 @@ class methods{
   
     //No funcional
     static difDivid2(Vx,Vy) {
-      var start= window.performance.now();
       n= math.size(Vx)
       var X = Vx
     
@@ -404,8 +386,6 @@ class methods{
       console.log(math.transpose(aux2))
     
       Coef = math.diag(D)
-      var end = window.performance.now();
-      console.log(`Execution time: ${end - start} ms`);
       // console.log(D._data)
       // console.log(Coef._data)
     }
@@ -451,7 +431,6 @@ class methods{
   }
   */
   static steffenSen( x0,f,tol,nmax ) {
-    var start = window.performance.now();
     let x1 = 0
     let x2 = 0
     var x= x0
@@ -475,8 +454,6 @@ class methods{
             console.log()
     }
     console.log(x + " " + x1 )
-    var end = window.performance.now();
-    console.log(`Execution time: ${end - start} ms`);
   }
 }
 
